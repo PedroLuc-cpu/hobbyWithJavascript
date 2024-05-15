@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudando Javascript</title>
+  <link rel="stylesheet" href="assets/styles/header.css">
+  
+</head>
+<body>
+  
+  <header id="header_style">
+    <h1>Javascript</h1>
+    <ul id="ul_styles_header">
+      <li>Home</li>
+    </ul>
+  </header>
+  <main>
+    <div id="conteudo_do_cadastro_produto">
+      <label for="nome_do_produto">
+        Nome do Produto:
+        <input type="text" name="nome_do_produto" id="nome_do_produto" required>
+      </label>
+      <label for="quantidade_do_produto">
+        Quantidade:
+        <input type="number" name="quantidade_do_produto" id="quantidade_do_produto" required>
+      </label>
+      <label for="preco_do_produto">
+        Preço do produto:
+        <input type="number" name="preco_do_produto" id="preco_do_produto" required>  
+      </label>
+      <p id="informacao_do_cadastro" style="color: orange;">Cadastre o seu produto</p>
+      <div>
+        <button type="submit" id="button_cadastrar_produto">Casdatrar</button>
+      </div>
+    </div>
+    <ul id="listBuy"></ul>
+    <p id="texto"></p>
+  </main>
+  <script src="assets/scripts/index.js"></script>
+  <script src="assets/scripts/array.js"></script>
+</body>
+
+</html>
