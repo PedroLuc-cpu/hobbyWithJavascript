@@ -83,6 +83,9 @@ button_cadastrar_produto.addEventListener("click", cadastrarProduto)
 function rederizarCarrinhoDeCompras() {
   if(carrinhoDeCompras.length === 0) {
     listOfBuying.innerHTML = "<li>Nenhum produto cadastrado</li>";
+    listOfBuying.style.textAlign = "center";
+    listOfBuying.style.fontSize = "2rem"
+    listOfBuying.style.color = "#1B1B1B"
     return;
   }
 
