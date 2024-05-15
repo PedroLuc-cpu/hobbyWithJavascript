@@ -5,6 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  color: white;
+
+}
+
 #header_style {
   background: #99CC7D;
   color: white;
@@ -40,7 +45,6 @@
 #conteudo_do_cadastro_produto>div>button:hover {
   background-color: #82bb63;
   transition: all 0.3s;
-  border-start-end-radius: 10px;
 }
 
 

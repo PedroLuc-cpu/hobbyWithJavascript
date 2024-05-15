@@ -1,25 +1,25 @@
 const carrinhoDeCompras = [
-    { nome: "Camiseta", quantidade: 2, preco: 25.00 },
-    { nome: "Calça Jeans", quantidade: 1, preco: 50.00 },
-    { nome: "Tênis", quantidade: 1, preco: 80.00 },
-    { nome: "Meias", quantidade: 3, preco: 5.00 },
-    { nome: "Boné", quantidade: 1, preco: 15.00 },
-    { nome: "Shorts", quantidade: 2, preco: 30.00 },
-    { nome: "Chinelo", quantidade: 1, preco: 20.00 },
-    { nome: "Jaqueta", quantidade: 1, preco: 100.00 },
-    { nome: "Cinto", quantidade: 1, preco: 10.00 },
-    { nome: "Mochila", quantidade: 1, preco: 40.00 },
-    { nome: "Blusa", quantidade: 2, preco: 35.00 },
-    { nome: "Calças Legging", quantidade: 2, preco: 45.00 },
-    { nome: "Luvas", quantidade: 1, preco: 8.00 },
-    { nome: "Bolsa", quantidade: 1, preco: 60.00 },
-    { nome: "Óculos de Sol", quantidade: 1, preco: 25.00 },
-    { nome: "Relógio", quantidade: 1, preco: 70.00 },
-    { nome: "Cachecol", quantidade: 1, preco: 12.00 },
-    { nome: "Capa de Chuva", quantidade: 1, preco: 55.00 },
-    { nome: "Guarda-chuva", quantidade: 1, preco: 18.00 },
-    { nome: "Sapatos", quantidade: 1, preco: 90.12 },
-    { nome: "Sapatos", quantidade: 1, preco: 90 },        
+    // { nome: "Camiseta", quantidade: 2, preco: 25.00 },
+    // { nome: "Calça Jeans", quantidade: 1, preco: 50.00 },
+    // { nome: "Tênis", quantidade: 1, preco: 80.00 },
+    // { nome: "Meias", quantidade: 3, preco: 5.00 },
+    // { nome: "Boné", quantidade: 1, preco: 15.00 },
+    // { nome: "Shorts", quantidade: 2, preco: 30.00 },
+    // { nome: "Chinelo", quantidade: 1, preco: 20.00 },
+    // { nome: "Jaqueta", quantidade: 1, preco: 100.00 },
+    // { nome: "Cinto", quantidade: 1, preco: 10.00 },
+    // { nome: "Mochila", quantidade: 1, preco: 40.00 },
+    // { nome: "Blusa", quantidade: 2, preco: 35.00 },
+    // { nome: "Calças Legging", quantidade: 2, preco: 45.00 },
+    // { nome: "Luvas", quantidade: 1, preco: 8.00 },
+    // { nome: "Bolsa", quantidade: 1, preco: 60.00 },
+    // { nome: "Óculos de Sol", quantidade: 1, preco: 25.00 },
+    // { nome: "Relógio", quantidade: 1, preco: 70.00 },
+    // { nome: "Cachecol", quantidade: 1, preco: 12.00 },
+    // { nome: "Capa de Chuva", quantidade: 1, preco: 55.00 },
+    // { nome: "Guarda-chuva", quantidade: 1, preco: 18.00 },
+    // { nome: "Sapatos", quantidade: 1, preco: 90.12 },
+    // { nome: "Sapatos", quantidade: 1, preco: 90 },        
 ];
 
 function vibrate(element, durantion) {
@@ -46,11 +46,12 @@ const preco_do_produto = document.getElementById("preco_do_produto");
 const button_cadastrar_produto = document.getElementById("button_cadastrar_produto");
 const resultadoMapper = carrinhoDeCompras.reduce((previousValue, currentValue) => previousValue + currentValue.preco, 0)
 const listOfBuying = document.querySelector("#listBuy")
+const conteudo_do_botao = document.getElementById("conteudo_do_botao");
 const listingProducts = document.createElement("li")
 
 const valorTotal = resultadoMapper.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})
 
-button_cadastrar_produto.addEventListener("click", function cadastrarProduto(e) {
+function cadastrarProduto(e) {
   e.preventDefault();
   const informacao_do_cadastro = document.getElementById("informacao_do_cadastro")
   if (!nome_do_produto.value || !quantidade_do_produto.value || !preco_do_produto.value) {
@@ -71,8 +72,13 @@ button_cadastrar_produto.addEventListener("click", function cadastrarProduto(e) 
     informacao_do_cadastro.innerText = "Cadastre o seu produto"
     informacao_do_cadastro.style.color = "orange"
   }, 3000)
+    nome_do_produto.value = ""
+    quantidade_do_produto.value = ""
+    preco_do_produto.value = ""
   rederizarCarrinhoDeCompras();
-})
+}
+
+button_cadastrar_produto.addEventListener("click", cadastrarProduto)
 
 function rederizarCarrinhoDeCompras() {
   if(carrinhoDeCompras.length === 0) {
@@ -84,6 +90,11 @@ function rederizarCarrinhoDeCompras() {
   listOfBuying.innerHTML = '';
   listOfBuying.style.border = '1px solid black'
   listOfBuying.style.padding = '10px'
+  listOfBuying.style.overflowY = 'scroll';
+  listOfBuying.style.height = "322px"
+  listOfBuying.style.scrollBehavior = 'smooth'; 
+
+
   carrinhoDeCompras.forEach((item) => {
     const li = document.createElement('li');
     li.style.listStyle = "none"
@@ -92,9 +103,8 @@ function rederizarCarrinhoDeCompras() {
     li.textContent = `${item.quantidade}X ${item.nome} - R$ ${item.quantidade * item.preco.toFixed(2)}`
     listOfBuying.appendChild(li)
   });
-
       const valorTotal = carrinhoDeCompras.reduce((total, item) => total + item.quantidade * item.preco, 0);
-      const totalElement = document.createElement('li');
+      const totalElement = document.createElement('h6');
         totalElement.style.fontWeight = 'bold';
         totalElement.style.listStyle = "none"
         totalElement.style.fontFamily = "arial"
@@ -107,6 +117,16 @@ function rederizarCarrinhoDeCompras() {
         totalElement.textContent = `Total: R$${valorTotal.toFixed(2)}`;
         listOfBuying.appendChild(totalElement);
 }
+document.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    button_cadastrar_produto.click();
+    nome_do_produto.focus();
+    nome_do_produto.value = ""
+    quantidade_do_produto.value = ""
+    preco_do_produto.value = ""
+  }
+})
+
 rederizarCarrinhoDeCompras()
 
 
