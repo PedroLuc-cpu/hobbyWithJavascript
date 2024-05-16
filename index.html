@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estudando Javascript</title>
   <link rel="stylesheet" href="assets/styles/header.css">
-  
+  <link rel="stylesheet" href="assets/styles/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Development version -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Production version -->
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   
@@ -15,7 +23,7 @@
       <li><a href="assets/pages/calculator.html">Calculadora</a></li>
     </ul>
   </header>
-  <main>
+  <main id="conteudo_principal_aplicacao">
     <div id="conteudo_do_cadastro_produto">
       <label for="nome_do_produto">
         Nome do Produto:
@@ -29,13 +37,38 @@
         Preço do produto:
         <input type="number" name="preco_do_produto" id="preco_do_produto" required>  
       </label>
+
+      <div id="conteudo_do_descontos">
+        <p>Desconto do produto:</p>
+        <input type="number" name="desconto_do_produto" id="desconto_do_produto">  
+        <p>Desconto Total:</p>
+        <input type="number" name="desconto_do_produto_total" id="desconto_do_produto_total">  
+      </div>
       <p id="informacao_do_cadastro" style="color: orange;">Cadastre o seu produto</p>
       <div id="conteudo_do_botao">
         <button type="submit" id="button_cadastrar_produto">Casdatrar</button>
       </div>
+      <ul id="listBuy"></ul>
+      <p id="texto"></p>
     </div>
-    <ul id="listBuy"></ul>
-    <p id="texto"></p>
+    <aside id="conteudo_filho_aside">
+      <div>
+        <h4>Valor:</h4>
+        <p id="valor_do_produto_infor">R$ 00,00</p>
+      </div>
+      <div>
+        <h4>Desconto</h4>
+        <p id="desconto_do_produto_infor">R$ 00,00</p>
+      </div>
+      <div>
+        <h4>SubTotal:</h4>
+        <p id="subTotal_do_produto_infor">R$ 00,00</p>
+      </div>
+      <div>
+        <h4>Valor Total:</h4>
+        <p id="valor_total_do_produto_infor">R$ 00,00</p>
+      </div>
+    </aside>
   </main>
   <script src="assets/scripts/index.js"></script>
   <script src="assets/scripts/array.js"></script>

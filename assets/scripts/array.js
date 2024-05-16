@@ -1,26 +1,5 @@
-const carrinhoDeCompras = [
-    // { nome: "Camiseta", quantidade: 2, preco: 25.00 },
-    // { nome: "Calça Jeans", quantidade: 1, preco: 50.00 },
-    // { nome: "Tênis", quantidade: 1, preco: 80.00 },
-    // { nome: "Meias", quantidade: 3, preco: 5.00 },
-    // { nome: "Boné", quantidade: 1, preco: 15.00 },
-    // { nome: "Shorts", quantidade: 2, preco: 30.00 },
-    // { nome: "Chinelo", quantidade: 1, preco: 20.00 },
-    // { nome: "Jaqueta", quantidade: 1, preco: 100.00 },
-    // { nome: "Cinto", quantidade: 1, preco: 10.00 },
-    // { nome: "Mochila", quantidade: 1, preco: 40.00 },
-    // { nome: "Blusa", quantidade: 2, preco: 35.00 },
-    // { nome: "Calças Legging", quantidade: 2, preco: 45.00 },
-    // { nome: "Luvas", quantidade: 1, preco: 8.00 },
-    // { nome: "Bolsa", quantidade: 1, preco: 60.00 },
-    // { nome: "Óculos de Sol", quantidade: 1, preco: 25.00 },
-    // { nome: "Relógio", quantidade: 1, preco: 70.00 },
-    // { nome: "Cachecol", quantidade: 1, preco: 12.00 },
-    // { nome: "Capa de Chuva", quantidade: 1, preco: 55.00 },
-    // { nome: "Guarda-chuva", quantidade: 1, preco: 18.00 },
-    // { nome: "Sapatos", quantidade: 1, preco: 90.12 },
-    // { nome: "Sapatos", quantidade: 1, preco: 90 },        
-];
+
+const carrinhoDeCompras = [];
 
 function vibrate(element, durantion) {
   let startTime = null;
@@ -48,8 +27,41 @@ const resultadoMapper = carrinhoDeCompras.reduce((previousValue, currentValue) =
 const listOfBuying = document.querySelector("#listBuy")
 const conteudo_do_botao = document.getElementById("conteudo_do_botao");
 const listingProducts = document.createElement("li")
-
 const valorTotal = resultadoMapper.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+
+// descontos do produtos =====================================================
+const desconto_do_produto = document.getElementById("desconto_do_produto");
+const desconto_do_produto_total = document.getElementById("desconto_do_produto_total");
+
+// informaçãoes dos produtos =================================================
+const valor_do_produto_infor  = document.getElementById("valor_do_produto_infor");
+const desconto_do_produto_infor = document.getElementById("desconto_do_produto_infor");
+const valor_total_do_produto_infor = document.getElementById("valor_total_do_produto_infor");
+const subTotal_do_produto_infor = document.getElementById("subTotal_do_produto_infor");
+
+
+function desconto_de_produto_unidades(valor_produto, valor_desconto) {
+  if (valor_desconto >= valor_produto) {
+    informacao_do_cadastro.innerText = "Você não pode dar desconto maior ou igual ao valor do produto.";
+    informacao_do_cadastro.style.color = "red";
+    return;
+  }
+  let novo_valor = parseFloat(valor_produto) - parseFloat(valor_desconto);
+
+  if (novo_valor < 0) {
+    informacao_do_cadastro.innerText = "O desconto é muito alto";
+    informacao_do_cadastro.style.color = "red";
+    return;
+  }
+
+  return parseFloat(valor_desconto.toFixed(2));
+
+}
+
+// function desconto_de_produto_total(valor_desconto, valorTotal){
+
+// }
+
 
 function cadastrarProduto(e) {
   e.preventDefault();
@@ -63,9 +75,11 @@ function cadastrarProduto(e) {
   let novoProduto = {
     nome: nome_do_produto.value,
     quantidade: quantidade_do_produto.value,
-    preco: parseFloat(preco_do_produto.value)
+    preco: parseFloat(preco_do_produto.value),
+    desconto: parseFloat(desconto_do_produto.value),
   }
   carrinhoDeCompras.push(novoProduto);
+  desconto_de_produto_unidades(novoProduto.preco, novoProduto.desconto)
   informacao_do_cadastro.innerText = "Produto cadastrado com sucesso"
   informacao_do_cadastro.style.color = "#99CC7D"
   setTimeout(() => {
@@ -75,6 +89,7 @@ function cadastrarProduto(e) {
     nome_do_produto.value = ""
     quantidade_do_produto.value = ""
     preco_do_produto.value = ""
+    desconto_do_produto.value = ""
   rederizarCarrinhoDeCompras();
 }
 
@@ -103,7 +118,11 @@ function rederizarCarrinhoDeCompras() {
     li.style.listStyle = "none"
     li.style.fontFamily = "arial"
     li.style.fontSize = "24px"
-    li.textContent = `${item.quantidade}X ${item.nome} - R$ ${item.quantidade * item.preco.toFixed(2)}`
+    li.textContent = `${item.quantidade}X ${item.nome} - R$ ${item.quantidade * item.preco.toFixed(2)} - desconto ${item.desconto}`
+    valor_do_produto_infor.innerText = `${item.preco.toFixed(2)}`;
+    desconto_do_produto_infor.innerText = `${desconto_de_produto_unidades(item.preco.toFixed(2), item.desconto)}`;
+  
+    // valor_total_do_produto_infor.innerText = `${valorTotal - item.desconto || valorTotal - desconto_do_produto_total.value}`
     listOfBuying.appendChild(li)
   });
       const valorTotal = carrinhoDeCompras.reduce((total, item) => total + item.quantidade * item.preco, 0);

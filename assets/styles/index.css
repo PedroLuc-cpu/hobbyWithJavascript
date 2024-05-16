@@ -1,0 +1,19 @@
+#conteudo_principal_aplicacao {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  align-items: baseline;
+  padding: 1rem;
+}
+
+#conteudo_filho_aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#conteudo_filho_aside> div {
+  background-color: rgb(243, 243, 243);
+  padding: 1rem;
+  color: rgb(94, 94, 94);
+}
