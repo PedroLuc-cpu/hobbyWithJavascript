@@ -37,6 +37,16 @@ const desconto_total_do_produto_infor = document.getElementById('desconto_total_
 const valor_total_do_produto_infor = document.getElementById("valor_total_do_produto_infor");
 const subTotal_do_produto_infor = document.getElementById("subTotal_do_produto_infor");
 
+function percorrer_array_produto_listados(element_by_id) {
+  const getElementBy = document.querySelector(String(element_by_id));
+  const childrenLists = getElementBy.childNodes
+  const newArrayBuyLists = [];
+
+  for (const iterator of childrenLists) {
+    newArrayBuyLists.push(iterator.textContent);
+  }
+  return newArrayBuyLists;
+}
 
 function desconto_de_produto_unidades(valor_produto, valor_desconto) {
   const informacao_do_cadastro = document.getElementById("informacao_do_cadastro");
@@ -58,13 +68,15 @@ function desconto_de_produto_unidades(valor_produto, valor_desconto) {
 }
 
 function cadastrarProduto(e) {
-  e.preventDefault();
   const informacao_do_cadastro = document.getElementById("informacao_do_cadastro");
   
   if (!nome_do_produto.value || !quantidade_do_produto.value || !preco_do_produto.value) {
-    informacao_do_cadastro.style.color = 'red'
     vibrate(informacao_do_cadastro, 1000)
-    informacao_do_cadastro.innerText = "Por favor, preencha todos os campos antes de cadastrar o produto."
+    
+    informacao_do_cadastro.className = "alert alert-danger"
+    setInterval(() => {
+      informacao_do_cadastro.className = "d-none"
+    },4000)
     return;
   }
 
@@ -100,8 +112,8 @@ function cadastrarProduto(e) {
   desconto_do_produto.value = "";
   
   rederizarCarrinhoDeCompras();
+  percorrer_array_produto_listados("#listBuy")
 }
-
 
 button_cadastrar_produto.addEventListener("click", cadastrarProduto)
 
@@ -165,6 +177,8 @@ document.addEventListener("keypress", function(e) {
 })
 
 rederizarCarrinhoDeCompras()
+
+
 
 
 // TODO: Verficado o motivo de não estar mais cadastrando os produtos, supeito que seja o novo evento de dar desconto total usando o keyPress

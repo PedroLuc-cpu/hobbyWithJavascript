@@ -32,7 +32,7 @@ a {
   row-gap: 1rem;
 }
 
-#conteudo_do_cadastro_produto>div>button {
+/* #conteudo_do_cadastro_produto>div>button {
   cursor: pointer;
   padding: 1rem;
   border: transparent;
@@ -46,7 +46,7 @@ a {
 #conteudo_do_cadastro_produto>div>button:hover {
   background-color: #82bb63;
   transition: all 0.3s;
-}
+} */
 
 #conteudo_do_descontos {
   display: flex;

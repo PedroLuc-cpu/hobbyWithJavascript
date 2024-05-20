@@ -44,30 +44,33 @@
         <input placeholder="Desconto do produto" type="number" name="desconto_do_produto" id="desconto_do_produto" class="form-control">  
         <input placeholder ="Desconto Total" name="desconto_do_produto_total" id="desconto_do_produto_total" class="form-control" >  
       </div>
-      <p id="informacao_do_cadastro" style="color: orange;">Cadastre o seu produto</p>
+      <!-- <p id="informacao_do_cadastro" style="color: orange;">Cadastre o seu produto</p> -->
+      <div class="d-none" role="alert" id="informacao_do_cadastro">
+        A simple primary alert—check it out!
+      </div>
       <div id="conteudo_do_botao">
-        <button type="submit" id="button_cadastrar_produto">Casdatrar</button>
+        <button type="submit" id="button_cadastrar_produto" class="btn btn-success btn-lg">Cadastrar</button>
       </div>
       <p id="texto"></p>
     </div>
     <aside id="conteudo_filho_aside">
-      <div class="card-body bg-light-subtle border border-1">
+      <div class="card-body bg-light-subtle border border-1 rounded">
         <h4 class="card-title">Valor:</h4>
         <p class="card-text" id="valor_do_produto_infor">R$: 00,00</p>
       </div>
-      <div class="card-body border bg-light-subtle border-1">
+      <div class="card-body border bg-light-subtle border-1 rounded">
         <h4 class="card-title">Desconto:</h4>
         <p class="card-text" id="desconto_do_produto_infor">R$: 00,00</p>
       </div>
-      <div class="card-body bg-light-subtle border border-1">
+      <div class="card-body bg-light-subtle border border-1 rounded">
         <h4 class="card-title">Desconto Total:</h4>
         <p id="desconto_total_do_produto_infor">R$: 00,00</p>
       </div>
-      <div class="card-body bg-light-subtle border border-1">
+      <div class="card-body bg-light-subtle border border-1 rounded">
         <h4 class="card-title">SubTotal:</h4>
         <p class="card-text" id="subTotal_do_produto_infor">R$: 00,00</p>
       </div>
-      <div class="card-body bg-light-subtle border border-1">
+      <div class="card-body bg-light-subtle border border-1 rounded">
         <h4 class="card-title">Valor Total:</h4>
         <p class="card-text" id="valor_total_do_produto_infor">R$: 00,00</p>
       </div>
