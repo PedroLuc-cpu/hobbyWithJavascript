@@ -48,23 +48,7 @@ a {
   transition: all 0.3s;
 }
 
-
-#conteudo_do_cadastro_produto>label{
-  font-size: 1.5rem;
-}
-
-#conteudo_do_cadastro_produto>label>input{
-  padding: 0.5rem;
-  width: 100%;
-  font-size: 1.2rem;
-}
-
 #conteudo_do_descontos {
   display: flex;
   gap: 0.2rem;
-}
-
-#conteudo_do_descontos>input{
-  padding: 0.5rem;
-  font-size: 1.2rem;
 }

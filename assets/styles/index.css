@@ -1,7 +1,7 @@
 #conteudo_principal_aplicacao {
   display: grid;
   height: 100%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: baseline;
   padding: 1rem;
 }

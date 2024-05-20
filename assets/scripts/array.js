@@ -85,7 +85,7 @@ function cadastrarProduto(e) {
   };
 
   carrinhoDeCompras.push(novoProduto);
-  desconto_do_produto_infor.innerText = `R$ ${novoProduto.desconto}`;
+  desconto_do_produto_infor.innerText = `R$: ${novoProduto.desconto}`;
 
   informacao_do_cadastro.innerText = "Produto cadastrado com sucesso"
   informacao_do_cadastro.style.color = "#99CC7D"
@@ -107,7 +107,7 @@ button_cadastrar_produto.addEventListener("click", cadastrarProduto)
 
 function rederizarCarrinhoDeCompras() {
   if(carrinhoDeCompras.length === 0) {
-    listOfBuying.innerHTML = "<li>Nenhum produto cadastrado</li>";
+    listOfBuying.innerHTML = `<li class="text-center list-group-item">Nenhum produto cadastrado</li>`;
     listOfBuying.style.fontSize = "2rem"
     listOfBuying.style.padding = '10px'
     listOfBuying.style.color = "#1B1B1B"
@@ -116,26 +116,23 @@ function rederizarCarrinhoDeCompras() {
 
 
   listOfBuying.innerHTML = '';
-  listOfBuying.style.border = '1px solid black'
+  listOfBuying.className = "list-group list-group-flush"
   listOfBuying.style.padding = '10px'
-  listOfBuying.style.overflowY = 'scroll';
-  listOfBuying.style.height = "322px"
   listOfBuying.style.scrollBehavior = 'smooth'; 
 
 
   carrinhoDeCompras.forEach((item) => {
     const li = document.createElement('li');
-    li.style.listStyle = "none"
+    li.className = "list-group-item list-group-item-secondary fs-6"
     li.style.fontFamily = "arial"
-    li.style.fontSize = "24px"
-    li.textContent = `${item.quantidade}X ${item.nome} - R$ ${item.quantidade * item.preco.toFixed(2)} - desconto ${item.desconto}`
-    valor_do_produto_infor.innerText = `${item.preco.toFixed(2)}`;
-    desconto_do_produto_infor.innerText = `${desconto_de_produto_unidades(item.preco.toFixed(2), item.desconto)}`;
+    li.textContent = `${item.quantidade}X ${item.nome} - R$: ${item.quantidade * item.preco.toFixed(2)} - desconto ${item.desconto}`
+    valor_do_produto_infor.innerText = `R$: ${item.preco.toFixed(2)}`;
+    desconto_do_produto_infor.innerText = `R$: ${desconto_de_produto_unidades(item.preco.toFixed(2), item.desconto)}`;
     listOfBuying.appendChild(li)
   });
       const valorTotal = carrinhoDeCompras.reduce((total, item) => total + item.quantidade * item.preco, 0);
-      subTotal_do_produto_infor.innerText = `R$ ${parseFloat(valorTotal).toFixed(2)}`;
-      valor_total_do_produto_infor.innerText = `R$ ${parseFloat(valorTotal - desconto_do_produto.value).toFixed(2)}`;
+      subTotal_do_produto_infor.innerText = `R$: ${parseFloat(valorTotal).toFixed(2)}`;
+      valor_total_do_produto_infor.innerText = `R$: ${parseFloat(valorTotal - desconto_do_produto.value).toFixed(2)}`;
 }
 
 
@@ -151,7 +148,7 @@ desconto_do_produto_total.addEventListener("focus", () => {
 
     if (e.shiftKey === 'Enter') {
       alert();
-      desconto_total_do_produto_infor.innerText = `R$ ${valorTotalCarrinho - desconto_do_produto_total.value}`;
+      desconto_total_do_produto_infor.innerText = `R$: ${valorTotalCarrinho - desconto_do_produto_total.value}`;
     }
   });
 })

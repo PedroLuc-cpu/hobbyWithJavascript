@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
   <!-- Development version -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -17,65 +19,65 @@
 </head>
 <body>
   
-  <header id="header_style">
+  <header id="header_style" class="bg-success">
     <h1>Javascript</h1>
     <ul id="ul_styles_header">
       <li><a href="assets/pages/calculator.html">Calculadora</a></li>
     </ul>
   </header>
   <main id="conteudo_principal_aplicacao">
-    <div id="conteudo_do_cadastro_produto">
-      <label for="nome_do_produto">
+    <div id="conteudo_do_cadastro_produto" class="card card-body bg-light-subtle">
+      <label class="form-label text-secondary-emphasis" for="nome_do_produto">
         Nome do Produto:
-        <input type="text" name="nome_do_produto" id="nome_do_produto" required>
+        <input type="text" name="nome_do_produto" id="nome_do_produto" required class="form-control">
       </label>
-      <label for="quantidade_do_produto">
+      <label class="form-label text-secondary-emphasis" for="quantidade_do_produto">
         Quantidade:
-        <input type="number" name="quantidade_do_produto" id="quantidade_do_produto" required>
+        <input type="number" name="quantidade_do_produto" id="quantidade_do_produto" required class="form-control">
       </label>
-      <label for="preco_do_produto">
+      <label class="form-label text-secondary-emphasis" for="preco_do_produto">
         Preço do produto:
-        <input type="number" name="preco_do_produto" id="preco_do_produto" required>  
+        <input type="number" name="preco_do_produto" id="preco_do_produto" required class="form-control">  
       </label>
 
       <div id="conteudo_do_descontos">
-        <p>Desconto do produto:</p>
-        <input type="number" name="desconto_do_produto" id="desconto_do_produto">  
-        <p>Desconto Total:</p>
-        <input type="number" name="desconto_do_produto_total" id="desconto_do_produto_total">  
+        <input placeholder="Desconto do produto" type="number" name="desconto_do_produto" id="desconto_do_produto" class="form-control">  
+        <input placeholder ="Desconto Total" name="desconto_do_produto_total" id="desconto_do_produto_total" class="form-control" >  
       </div>
       <p id="informacao_do_cadastro" style="color: orange;">Cadastre o seu produto</p>
       <div id="conteudo_do_botao">
         <button type="submit" id="button_cadastrar_produto">Casdatrar</button>
       </div>
-      <ul id="listBuy"></ul>
       <p id="texto"></p>
     </div>
     <aside id="conteudo_filho_aside">
-      <div>
-        <h4>Valor:</h4>
-        <p id="valor_do_produto_infor">R$ 00,00</p>
+      <div class="card-body bg-light-subtle border border-1">
+        <h4 class="card-title">Valor:</h4>
+        <p class="card-text" id="valor_do_produto_infor">R$: 00,00</p>
       </div>
-      <div>
-        <h4>Desconto:</h4>
-        <p id="desconto_do_produto_infor">R$ 00,00</p>
+      <div class="card-body border bg-light-subtle border-1">
+        <h4 class="card-title">Desconto:</h4>
+        <p class="card-text" id="desconto_do_produto_infor">R$: 00,00</p>
       </div>
-      <div>
-        <h4>Desconto Total:</h4>
-        <p id="desconto_total_do_produto_infor">R$ 00,00</p>
+      <div class="card-body bg-light-subtle border border-1">
+        <h4 class="card-title">Desconto Total:</h4>
+        <p id="desconto_total_do_produto_infor">R$: 00,00</p>
       </div>
-      <div>
-        <h4>SubTotal:</h4>
-        <p id="subTotal_do_produto_infor">R$ 00,00</p>
+      <div class="card-body bg-light-subtle border border-1">
+        <h4 class="card-title">SubTotal:</h4>
+        <p class="card-text" id="subTotal_do_produto_infor">R$: 00,00</p>
       </div>
-      <div>
-        <h4>Valor Total:</h4>
-        <p id="valor_total_do_produto_infor">R$ 00,00</p>
+      <div class="card-body bg-light-subtle border border-1">
+        <h4 class="card-title">Valor Total:</h4>
+        <p class="card-text" id="valor_total_do_produto_infor">R$: 00,00</p>
       </div>
     </aside>
+    <ul id="listBuy"></ul>
   </main>
   <script src="assets/scripts/index.js"></script>
   <script src="assets/scripts/array.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 
 </html>
