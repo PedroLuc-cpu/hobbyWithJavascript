@@ -37,6 +37,14 @@ const desconto_total_do_produto_infor = document.getElementById('desconto_total_
 const valor_total_do_produto_infor = document.getElementById("valor_total_do_produto_infor");
 const subTotal_do_produto_infor = document.getElementById("subTotal_do_produto_infor");
 
+// Formador de valores para real =========
+const formatador = new Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL'
+});
+
+console.log(formatador.format(10000000000))
+
 function percorrer_array_produto_listados(element_by_id) {
   const getElementBy = document.querySelector(String(element_by_id));
   const childrenLists = getElementBy.childNodes
@@ -45,6 +53,7 @@ function percorrer_array_produto_listados(element_by_id) {
   for (const iterator of childrenLists) {
     newArrayBuyLists.push(iterator.textContent);
   }
+  console.table(newArrayBuyLists)
   return newArrayBuyLists;
 }
 
@@ -137,14 +146,14 @@ function rederizarCarrinhoDeCompras() {
     const li = document.createElement('li');
     li.className = "list-group-item list-group-item-secondary fs-6"
     li.style.fontFamily = "arial"
-    li.textContent = `${item.quantidade}X ${item.nome} - R$: ${item.quantidade * item.preco.toFixed(2)} - desconto ${item.desconto}`
-    valor_do_produto_infor.innerText = `R$: ${item.preco.toFixed(2)}`;
+    li.textContent = `${item.quantidade}X ${item.nome} - R$: ${formatador.format(item.quantidade * item.preco)} - desconto ${formatador.format(item.desconto)}`
+    valor_do_produto_infor.innerText = `R$: ${formatador.format(item.preco)}`;
     desconto_do_produto_infor.innerText = `R$: ${desconto_de_produto_unidades(item.preco.toFixed(2), item.desconto)}`;
     listOfBuying.appendChild(li)
   });
       const valorTotal = carrinhoDeCompras.reduce((total, item) => total + item.quantidade * item.preco, 0);
-      subTotal_do_produto_infor.innerText = `R$: ${parseFloat(valorTotal).toFixed(2)}`;
-      valor_total_do_produto_infor.innerText = `R$: ${parseFloat(valorTotal - desconto_do_produto.value).toFixed(2)}`;
+      subTotal_do_produto_infor.innerText = `R$: ${formatador.format(parseFloat(valorTotal))}`;
+      valor_total_do_produto_infor.innerText = `R$: ${formatador.format(parseFloat(valorTotal - desconto_do_produto.value)) }`;
 }
 
 
