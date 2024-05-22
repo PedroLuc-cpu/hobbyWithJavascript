@@ -20,7 +20,7 @@
 <body>
   
   <header id="header_style" class="bg-success">
-    <h1>Javascript</h1>
+    <h1>Loja 02 - Aberto</h1>
     <ul id="ul_styles_header">
       <li><a href="assets/pages/calculator.html">Calculadora</a></li>
     </ul>
@@ -45,6 +45,10 @@
         <input placeholder="Desconto do produto" type="number" name="desconto_do_produto" id="desconto_do_produto" class="form-control">  
         <input placeholder ="Desconto Total" name="desconto_do_produto_total" id="desconto_do_produto_total" class="form-control" >  
       </div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Forma de pagamento
+      </button>
       <!-- <p id="informacao_do_cadastro" style="color: orange;">Cadastre o seu produto</p> -->
       <div class="d-none" role="alert" id="informacao_do_cadastro">
         A simple primary alert—check it out!
@@ -77,9 +81,57 @@
       </div>
     </aside>
     <ul id="listBuy"></ul>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Forma de pagamento</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex gap-1">
+            <button type="button" class="btn btn-outline-success flex-fill" id="forma_de_pagamento_dinherio" data-bs-dismiss="modal">Dinheiro</button>
+            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cartão
+            </button>
+                
+            <ul class="dropdown-menu">
+              <li id="pagamento_no_credito">
+                <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#pagamentocredito">Crédito</button>
+              </li>
+              <li><button class="dropdown-item" href="#">Débito</button></li>
+            </ul>
+            <!-- Modal -->
+            <div class="modal fade" id="#pagamentocredito" tabindex="-1" aria-labelledby="pagamentocreditoLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="pagamentocreditoLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>     
+            <button type="button" class="btn btn-outline-success flex-fill" id="forma_de_pagamento_pix" data-bs-dismiss="modal">Pix</button>
+            <button type="button" class="btn btn-outline-success flex-fill" id="forma_de_pagamento_loja" data-bs-dismiss="modal">Loja</button>
+          </div>
+          <div class="modal-footer justify-content-start">
+            <p>Escolha sua forma de pagamento</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="assets/scripts/index.js"></script>
   <script src="assets/scripts/cadastroProduto.js"></script>
+  <script src="assets/scripts/pagamento.js"></script>
   <script src="assets/scripts/object.js"></script>
   <script src="assets/scripts/blob.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
