@@ -159,9 +159,15 @@ function cadastrarProduto() {
     vibrate(informacao_do_cadastro, 1000);
 
     informacao_do_cadastro.className = "alert alert-danger";
-    setInterval(() => {
+
+    // TODO: estudar uma forma de limpar o delay
+    const showmessage = () => {
       informacao_do_cadastro.className = "d-none";
-    }, 4000);
+    };
+    const idInterval = () => setInterval(showmessage, 4000);
+    idInterval();
+    clearInterval(idInterval);
+
     return;
   }
 
@@ -224,15 +230,20 @@ function rederizarCarrinhoDeCompras() {
     li.className = "list-group-item list-group-item-secondary fs-6";
     li.style.fontFamily = "arial";
     li.textContent = `${item.quantidade}X ${item.nome} - R$: ${
-      formatador.format(item.quantidade * item.preco) ?? "00,00"
-    } - desconto ${formatador.format(item.desconto) ?? "00,00"}`;
+      formatador.format(item.quantidade * item.preco).replace("R$", "") ??
+      "00,00"
+    } - desconto ${
+      formatador.format(item.desconto).replace("R$", "") ?? "00,00"
+    }`;
     valor_do_produto_infor.innerText = `R$: ${
-      formatador.format(item.preco) ?? "00,00"
+      formatador.format(item.preco).replace("R$", "") ?? "00,00"
     }`;
     desconto_do_produto_infor.innerText = `R$: ${
-      formatador.format(
-        desconto_de_produto_unidades(item.preco.toFixed(2), item.desconto)
-      ) ?? "00,00"
+      formatador
+        .format(
+          desconto_de_produto_unidades(item.preco.toFixed(2), item.desconto)
+        )
+        .replace("R$", "") ?? "00,00"
     }`;
     listOfBuying.appendChild(li);
   });
@@ -240,12 +251,12 @@ function rederizarCarrinhoDeCompras() {
     (total, item) => total + item.quantidade * item.preco,
     0
   );
-  subTotal_do_produto_infor.innerText = `R$: ${formatador.format(
-    parseFloat(valorTotal)
-  )}`;
-  valor_total_do_produto_infor.innerText = `R$: ${formatador.format(
-    parseFloat(valorTotal - desconto_do_produto.value)
-  )}`;
+  subTotal_do_produto_infor.innerText = `R$: ${formatador
+    .format(parseFloat(valorTotal))
+    .replace("R$", "")}`;
+  valor_total_do_produto_infor.innerText = `R$: ${formatador
+    .format(parseFloat(valorTotal - desconto_do_produto.value))
+    .replace("R$", "")}`;
   console.log(desconto_do_produto.value);
 }
 
