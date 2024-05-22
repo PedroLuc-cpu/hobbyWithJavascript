@@ -109,10 +109,6 @@ lista_categoria.forEach((categoria) => {
   categoria_produto_select.appendChild(options_select_produto);
 });
 
-categoria_produto_select.addEventListener("change", (e) => {
-  console.log(e.target.value);
-});
-
 function percorrer_array_produto_listados(element_by_id) {
   const getElementBy = document.querySelector(String(element_by_id));
   const childrenLists = getElementBy.childNodes;
@@ -146,6 +142,7 @@ function desconto_de_produto_unidades(valor_produto, valor_desconto) {
   return parseFloat(valor_desconto.toFixed(2));
 }
 
+// Cadastro do produto
 function cadastrarProduto() {
   const informacao_do_cadastro = document.getElementById(
     "informacao_do_cadastro"
@@ -177,14 +174,24 @@ function cadastrarProduto() {
     valorProduto,
     valorDesconto
   );
+  let categoria_produto = "";
 
   if (descontoCalculado === null) {
     // Não prosseguir com o cadastro se o desconto for inválido
     return;
   }
 
+  categoria_produto_select.addEventListener("change", (e) => {
+    const selectedValue = parseInt(e.target.value);
+    const selectedCategory = lista_categoria.find(
+      (categoria) => categoria.value === selectedValue
+    );
+    categoria_produto = selectedCategory.categoria;
+  });
+
   let novoProduto = {
     nome: nome_do_produto.value,
+    categoria: categoria_produto,
     quantidade: quantidade_do_produto.value,
     preco: valorProduto,
     desconto: descontoCalculado,
@@ -262,32 +269,32 @@ function rederizarCarrinhoDeCompras() {
 
 // criar uma logica que der desconto total do produtos quando estiver focado e dar desconto quando apertar a teclar enten sem que cause efeito colateral
 // ao cadastar o produtos, pois o mesmo tambem se usa o Enter para cadastar.
-desconto_do_produto_total.addEventListener("focus", () => {
-  desconto_do_produto_total.addEventListener("keypress", function (e) {
-    e.stopPropagation();
-    const valorTotalCarrinho = carrinhoDeCompras.reduce(
-      (previousValue, currentValue) => previousValue + currentValue.preco,
-      0
-    );
+// desconto_do_produto_total.addEventListener("focus", () => {
+//   desconto_do_produto_total.addEventListener("keypress", function (e) {
+//     e.stopPropagation();
+//     const valorTotalCarrinho = carrinhoDeCompras.reduce(
+//       (previousValue, currentValue) => previousValue + currentValue.preco,
+//       0
+//     );
 
-    if (e.shiftKey === "Enter") {
-      alert();
-      desconto_total_do_produto_infor.innerText = `R$: ${
-        valorTotalCarrinho - desconto_do_produto_total.value
-      }`;
-    }
-  });
-});
+//     if (e.shiftKey === "Enter") {
+//       alert();
+//       desconto_total_do_produto_infor.innerText = `R$: ${
+//         valorTotalCarrinho - desconto_do_produto_total.value
+//       }`;
+//     }
+//   });
+// });
 
-document.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    button_cadastrar_produto.click();
-    nome_do_produto.focus();
-    nome_do_produto.value = "";
-    quantidade_do_produto.value = "";
-    preco_do_produto.value = "";
-  }
-});
+// document.addEventListener("keypress", function (e) {
+//   if (e.key === "Enter") {
+//     button_cadastrar_produto.click();
+//     nome_do_produto.focus();
+//     nome_do_produto.value = "";
+//     quantidade_do_produto.value = "";
+//     preco_do_produto.value = "";
+//   }
+// });
 
 rederizarCarrinhoDeCompras();
 
