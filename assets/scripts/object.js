@@ -24,34 +24,31 @@
 
 // const usigedObject = Object.create(person)
 
-
-
 // console.log(usigedObject.isHuman)
 // console.log(usigedObject.name = "John")
 // usigedObject.printIntroduction()
 
-const object = {}
+const object = {};
 Object.defineProperties(object, {
   property01: {
     value: 42,
-    writable: true
+    writable: true,
   },
   property02: {
     value: "John",
-    writable: false
+    writable: false,
   },
-})
+});
 
-console.log(object.property02)
+console.log(object.property02);
 
-
-const object01 = {}
-Object.defineProperty(object01, 'property03', {
+const object01 = {};
+Object.defineProperty(object01, "property03", {
   value: 212,
-  writable: false
-})
+  writable: false,
+});
 
-console.log(object01.property03)
+console.log(object01.property03);
 
 const object02 = {
   nome: "John",
@@ -65,14 +62,14 @@ const object02 = {
     age: 32,
     salary: 2999,
     trust: true,
-  }
-}
+  },
+};
 
 for (const [key, value] of Object.entries(object02)) {
-  console.table(`Key ${key}, Value ${value}`)
+  console.table(`Key ${key}, Value ${value}`);
 }
 
-console.log(Object.getOwnPropertyNames(object02))
+console.log(Object.getOwnPropertyNames(object02));
 
 const inventory = [
   { name: "asparagus", type: "vegetables", quantity: 5 },
@@ -80,6 +77,27 @@ const inventory = [
   { name: "goat", type: "meat", quantity: 23 },
   { name: "cherries", type: "fruit", quantity: 5 },
   { name: "fish", type: "meat", quantity: 22 },
+];
+
+const supermercado = [
+  { name: "arroz", type: "alimentos", quantity: 4 },
+  { name: "macarrão", type: "alimentos", quantity: 2 },
+  { name: "tomate", type: "verduras", quantity: 14 },
+  { name: "leite", type: "latcinios", quantity: 34 },
+  { name: "manteiga", type: "latcinios", quantity: 4 },
+  { name: "queijo", type: "latcinios", quantity: 7 },
+  { name: "farinha", type: "alimentos", quantity: 2 },
+  { name: "brocules", type: "verduras", quantity: 1 },
+  { name: "manga", type: "frutas", quantity: 12 },
+  { name: "banana", type: "frutas", quantity: 6 },
+  { name: "costelas de porco", type: "carnes", quantity: 2 },
+  { name: "peito de frango", type: "carnes brancas", quantity: 2 },
+  { name: "alcatra", type: "carnes", quantity: 4 },
+  { name: "feijão", type: "alimentos", quantity: 1 },
+  { name: "cebola", type: "saladas", quantity: 3 },
+  { name: "alface", type: "saladas", quantity: 1 },
+  { name: "limão", type: "saladas", quantity: 2 },
+  { name: "vinagre", type: "diversos", quantity: 1 },
 ];
 
 function groupBy(list, keyGetter) {
@@ -95,10 +113,12 @@ function groupBy(list, keyGetter) {
   });
   return map;
 }
-Object.prototype.groupBy = groupBy
+Object.prototype.groupBy = groupBy;
 
-console.log(Object.prototype)
+console.log(Object.prototype);
 
+const result = Object.groupBy(inventory, ({ type }) => type);
+const resultSupermercado = Object.groupBy(supermercado, ({ type }) => type);
 
-const result = Object.groupBy(inventory, ({ type }) => type)
-console.log(result)
+console.log(result);
+console.log(resultSupermercado);
