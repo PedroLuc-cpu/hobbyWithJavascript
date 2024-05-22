@@ -7,7 +7,7 @@
 
 // console.log(arrayNumeros)
 
-console.log("Mop Top".match(/[tm]op/gi));
+// console.log("Mop Top".match(/[tm]op/gi));
 
 const calculator_main = document.getElementById("calculator_main");
 

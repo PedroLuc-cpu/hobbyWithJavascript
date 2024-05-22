@@ -40,7 +40,7 @@ Object.defineProperties(object, {
   },
 });
 
-console.log(object.property02);
+// console.log(object.property02);
 
 const object01 = {};
 Object.defineProperty(object01, "property03", {
@@ -48,7 +48,7 @@ Object.defineProperty(object01, "property03", {
   writable: false,
 });
 
-console.log(object01.property03);
+// console.log(object01.property03);
 
 const object02 = {
   nome: "John",
@@ -66,10 +66,10 @@ const object02 = {
 };
 
 for (const [key, value] of Object.entries(object02)) {
-  console.table(`Key ${key}, Value ${value}`);
+  // console.table(`Key ${key}, Value ${value}`);
 }
 
-console.log(Object.getOwnPropertyNames(object02));
+// console.log(Object.getOwnPropertyNames(object02));
 
 const inventory = [
   { name: "asparagus", type: "vegetables", quantity: 5 },
@@ -115,10 +115,10 @@ function groupBy(list, keyGetter) {
 }
 Object.prototype.groupBy = groupBy;
 
-console.log(Object.prototype);
+// console.log(Object.prototype);
 
 const result = Object.groupBy(inventory, ({ type }) => type);
 const resultSupermercado = Object.groupBy(supermercado, ({ type }) => type);
 
-console.log(result);
-console.log(resultSupermercado);
+//console.log(result);
+// console.log(resultSupermercado);
