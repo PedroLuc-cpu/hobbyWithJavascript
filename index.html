@@ -97,45 +97,66 @@
                 
             <ul class="dropdown-menu">
               <li id="pagamento_no_credito">
-                <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#pagamentocredito">Crédito</button>
+                <button id="btn_Credito" type="button" class="btn dropdown-item">Crédito</button>
               </li>
-              <li><button class="dropdown-item" href="#">Débito</button></li>
+              <li><button id="btn_Debito" class="btn dropdown-item">Débito</button></li>
             </ul>
-            <!-- Modal -->
-            <div class="modal fade" id="#pagamentocredito" tabindex="-1" aria-labelledby="pagamentocreditoLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="pagamentocreditoLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>     
             <button type="button" class="btn btn-outline-success flex-fill" id="forma_de_pagamento_pix" data-bs-dismiss="modal">Pix</button>
             <button type="button" class="btn btn-outline-success flex-fill" id="forma_de_pagamento_loja" data-bs-dismiss="modal">Loja</button>
           </div>
-          <div class="modal-footer justify-content-start">
+          <div class="modal-footer justify-content-start" id="conteudo_de_pagamento_cartao">
             <p>Escolha sua forma de pagamento</p>
+            <form id="parcelamentoForm">
+            <!-- <label for="valorTotal">Valor Total da Compra:</label>
+            <input type="number" id="valorTotal" name="valorTotal" min="0" step="0.01" required> -->
+            
+            <label for="numParcelas">Número de Parcelas:</label>
+            <select id="numParcelas" name="numParcelas" required>
+                <option value="1">1 parcela</option>
+                <option value="2">2 parcelas</option>
+                <option value="3">3 parcelas</option>
+                <option value="4">4 parcelas</option>
+                <option value="5">5 parcelas</option>
+                <option value="6">6 parcelas</option>
+                <option value="7">7 parcelas</option>
+                <option value="8">8 parcelas</option>
+                <option value="9">9 parcelas</option>
+                <option value="10">10 parcelas</option>
+                <option value="11">11 parcelas</option>
+                <option value="12">12 parcelas</option>
+            </select>
+            
+            <button type="button" id="calcularParcelas">Calcular</button>
+            <h5 class="resultado_da_compra" id="resultado_da_compra"></div>
+        </form>
+            <div class="result" id="resultado"></div>
+        <table id="tabelaParcelas" style="display: none;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Número da Parcela</th>
+                    <th>Valor da Parcela (R$)</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaCorpo" class="table-group-divider">
+            </tbody>
+        </table>
+            <script>
+        
+    </script>
+            
           </div>
         </div>
       </div>
     </div>
   </main>
-  <script src="assets/scripts/index.js"></script>
-  <script src="assets/scripts/cadastroProduto.js"></script>
-  <script src="assets/scripts/pagamento.js"></script>
-  <script src="assets/scripts/object.js"></script>
-  <script src="assets/scripts/blob.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script type="module" src="./assets/scripts/pagamento.js"></script>
+    <script type="module" src="./assets/scripts/cadastroProduto.js"></script>
+    <script type="module" src="assets/utils/groupBy.js"></script>
+    <!-- <script src="assets/scripts/index.js"></script>
+    <script src="assets/scripts/object.js"></script>
+    <script src="assets/scripts/blob.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 
 </html>

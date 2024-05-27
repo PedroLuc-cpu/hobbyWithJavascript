@@ -11,7 +11,7 @@
 
 const calculator_main = document.getElementById("calculator_main");
 
-console.log(calculator_main.firstChild);
+// console.log(calculator_main.firstChild);
 
 async function* foo() {
   yield await Promise.resolve("a");
@@ -27,7 +27,7 @@ async function generate() {
     str = str + val;
     teste.innerText = str;
   }
-  console.log(str);
+  // console.log(str);
 }
 
 // generate();
@@ -40,4 +40,4 @@ const linguagens = window.navigator.languages;
     listagem.innerText = linguagens[index];
   }
 
-  console.log(teste.childNodes)
+  // console.log(teste.childNodes)

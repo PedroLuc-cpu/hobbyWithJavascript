@@ -120,5 +120,5 @@ Object.prototype.groupBy = groupBy;
 const result = Object.groupBy(inventory, ({ type }) => type);
 const resultSupermercado = Object.groupBy(supermercado, ({ type }) => type);
 
-//console.log(result);
-// console.log(resultSupermercado);
+console.log(result);
+console.log(resultSupermercado);

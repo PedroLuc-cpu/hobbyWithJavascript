@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-
-const carrinhoDeCompras = [];
+export const carrinhoDeCompras = [];
 
 function vibrate(element, durantion) {
   let startTime = null;
@@ -264,8 +263,71 @@ function rederizarCarrinhoDeCompras() {
   valor_total_do_produto_infor.innerText = `R$: ${formatador
     .format(parseFloat(valorTotal - desconto_do_produto.value))
     .replace("R$", "")}`;
-  console.log(desconto_do_produto.value);
 }
+
+// -------------------------------- parcelamento via cartão de crédito --------------------------------
+const btn_Credito = document.getElementById("btn_Credito");
+
+btn_Credito.addEventListener("click", () => {
+  const conteudo_dos_parcelamentos = document.createElement("div");
+  conteudo_dos_parcelamentos.innerHTML = conteudo_de_pagamento_cartao.append(
+    conteudo_dos_parcelamentos
+  );
+});
+
+const resultado_da_compra = document.getElementById("resultado_da_compra");
+
+  const valorTotal = carrinhoDeCompras.reduce(
+    (total, item) => total + item.quantidade * item.preco,
+    0
+  );
+
+  console.log(valorTotal)
+
+resultado_da_compra.innerText = `Valor da comprar: ${valorTotal || "00,00"}`;
+
+function calcularParcelas() {
+
+  // const valorTotal = parseFloat(document.getElementById("valorTotal").value);
+  const numParcelas = parseInt(document.getElementById("numParcelas").value);
+  const resultado = document.getElementById("resultado");
+  const tabelaParcelas = document.getElementById("tabelaParcelas");
+  const tabelaCorpo = document.getElementById("tabelaCorpo");
+  if (
+    isNaN(valorTotal) ||
+    isNaN(numParcelas) ||
+    valorTotal <= 0 ||
+    numParcelas <= 0
+  ) {
+    resultado.textContent = "Por favor, insira valores válidos.";
+    tabelaParcelas.style.display = "none";
+    return;
+  }
+
+  const valorParcela = (valorTotal / numParcelas).toFixed(2);
+
+  resultado.textContent = `O valor de cada parcela será: R$ ${valorParcela}`;
+  tabelaCorpo.innerHTML = "";
+
+  for (let i = 1; i <= numParcelas; i++) {
+    const row = document.createElement("tr");
+    const cellNumero = document.createElement("td");
+    const cellValor = document.createElement("td");
+
+    cellNumero.textContent = i;
+    cellValor.textContent = valorParcela;
+
+    row.appendChild(cellNumero);
+    row.appendChild(cellValor);
+    tabelaCorpo.appendChild(row);
+  }
+
+  tabelaParcelas.style.display = "table";
+}
+
+document
+  .getElementById("calcularParcelas")
+  .addEventListener("click", calcularParcelas);
 
 // criar uma logica que der desconto total do produtos quando estiver focado e dar desconto quando apertar a teclar enten sem que cause efeito colateral
 // ao cadastar o produtos, pois o mesmo tambem se usa o Enter para cadastar.
@@ -295,7 +357,4 @@ function rederizarCarrinhoDeCompras() {
 //     preco_do_produto.value = "";
 //   }
 // });
-
 rederizarCarrinhoDeCompras();
-
-// TODO: Verficado o motivo de não estar mais cadastrando os produtos, supeito que seja o novo evento de dar desconto total usando o keyPress
