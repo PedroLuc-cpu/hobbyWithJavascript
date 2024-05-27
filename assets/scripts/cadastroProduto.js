@@ -282,7 +282,7 @@ const resultado_da_compra = document.getElementById("resultado_da_compra");
     0
   );
 
-  console.log(valorTotal)
+  console.log(valorTotal.length)
 
 resultado_da_compra.innerText = `Valor da comprar: ${valorTotal || "00,00"}`;
 
