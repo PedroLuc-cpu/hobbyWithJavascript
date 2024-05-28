@@ -3,7 +3,7 @@
 }
 
 #conteiner-main {
-  background-color: azure;
+  background-color: #fff;
 }
 
 #item-2-grid-section {
@@ -17,13 +17,13 @@
 }
 
 #item-01{
-  background-color: red;
+  background-color: #002153;
   grid-area: main;
   height: 500px;
 }
 
 #item-02-aside {
-  background-color: orange;
+  background-color: #CF0921;
   grid-area: sidebar;
 }
 
